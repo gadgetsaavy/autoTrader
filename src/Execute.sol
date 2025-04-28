@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
@@ -44,6 +45,7 @@ contract FlashArbitrage is ReentrancyGuard, Ownable {
         require(!allowedTokens[token], "Token already added");
         
         _addToken(token, decimals);
+    }
 
     function getTokenPairs() external view returns (address[] memory pairs) {
         uint256 count = 0;
@@ -60,13 +62,6 @@ contract FlashArbitrage is ReentrancyGuard, Ownable {
             }
         }
     }
-
-    // Resize the array to the actual count
-    pairs = new address[](count);
-    for (uint i = 0; i < count; i++) {
-        pairs[i] = tempPairs[i];
-    }
-}
 
     // Resize the array to fit the actual number of pairs
     pairs = new address[](count);
