@@ -1,0 +1,82 @@
+# Arbitrage Bot Configuration
+arbitrage_bot:
+  # Trading Parameters
+  max_trades_per_minute: 10
+  min_profit_threshold: 0.01 # 1% minimum profit
+  max_slippage: 0.05 # 5% maximum slippage
+  gas_price_multiplier: 1.2 # Multiplier for gas price
+  
+  # Contract Settings
+  contract_address: "0xYourContractAddress"
+  rpc_url: "https://mainnet.infura.io/v3/YOUR_PROJECT_ID"
+  private_key: "0xYourPrivateKey"
+
+  # Token Configuration
+  tokens:
+  - symbol: ETH
+    address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    decimals: 18
+  - symbol: USDT
+    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+    decimals: 6
+  - symbol: USDC
+    address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+    decimals: 6
+  - symbol: DAI
+    address: "0x6A74027297c4C77835d2328c98dd38d4886Ad717"
+    decimals: 18
+  - symbol: WBTC
+    address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+    decimals: 8
+  - symbol: MATIC
+    address: "0x7D1Af104CB029888141612092096f86f7E93Fa4e"
+    decimals: 18
+  
+  # Exchange Configuration
+  exchanges:
+    uniswap_v2:
+      enabled: true
+      router_address: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
+    uniswap_v3:
+      enabled: true
+      router_address: "0xE592427A0AEce92De3Edee1F18E0157C05861564"
+    curve:
+      enabled: true
+      router_address: "0x11111112542D85C47f905561B0024945C533D949"
+  
+  # Risk Management
+  risk_management:
+    max_trade_amount: 1000000.0 # Maximum trade amount in ETH
+    min_liquidity: 1000.0 # Minimum liquidity requirement
+    max_gas_price: 100 # Maximum gas price in gwei
+    emergency_stop_loss: 0.1 # Emergency stop loss percentage
+
+  # Monitoring
+  monitoring:
+    enabled: true
+    alert_thresholds:
+      error_rate: 0.1
+      gas_price_spike: 50%
+      profit_loss_ratio: 0.5
+    notification_channels:
+      telegram:
+        enabled: true
+        api_key: "YOUR_TELEGRAM_BOT_API_KEY"
+        chat_id: "YOUR_CHAT_ID"
+      discord:
+        enabled: false
+        webhook_url: "YOUR_DISCORD_WEBHOOK_URL"
+
+  # Logging
+  logging:
+    level: INFO
+    file: "arb_bot.log"
+    rotation_size: 10MB
+    retention_days: 7
+
+  # Redis Cache
+  redis:
+    host: "localhost"
+    port: 6379
+    db: 0
+    password: "your_redis_password"
